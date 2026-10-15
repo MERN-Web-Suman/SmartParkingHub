@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── CSS Variables ────────────────────────────────────────────── */
+:root {
+  --bg-base:      #030712;
+  --bg-surface:   #060d1d;
+  --bg-card:      #0d1527;
+  --bg-card-2:    #111e35;
+  --border:       rgba(255,255,255,0.08);
+  --border-glow:  rgba(16,185,129,0.30);
+
+  --emerald:  #10b981;
+  --cyan:     #06b6d4;
+  --amber:    #f59e0b;
+  --rose:     #f43f5e;
+  --violet:   #8b5cf6;
+  --sky:      #0ea5e9;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Base Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #030712;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 15% -10%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 110%, rgba(6, 182, 212, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+    radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  background-attachment: fixed;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981 0%, #06b6d4 100%);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover { background: #10b981; }
+
+/* ── Glassmorphism Panels ─────────────────────────────────────── */
+.glass-panel {
+  background: rgba(8,13,26,0.80);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(14,22,40,0.90) 0%, rgba(11,18,33,0.85) 100%);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(16,185,129,0.22);
+  box-shadow:
+    0 20px 60px -10px rgba(0,0,0,0.6),
+    0 0 25px -5px rgba(16,185,129,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* ── Neon Glow Utilities ──────────────────────────────────────── */
+.glow-emerald {
+  box-shadow: 0 0 30px rgba(16,185,129,0.30), 0 0 80px rgba(16,185,129,0.08);
+}
+.glow-cyan {
+  box-shadow: 0 0 30px rgba(6,182,212,0.28), 0 0 80px rgba(6,182,212,0.07);
+}
+.glow-rose {
+  box-shadow: 0 0 30px rgba(244,63,94,0.30), 0 0 80px rgba(244,63,94,0.07);
+}
+.glow-amber {
+  box-shadow: 0 0 30px rgba(245,158,11,0.28), 0 0 80px rgba(245,158,11,0.07);
+}
+.glow-violet {
+  box-shadow: 0 0 30px rgba(139,92,246,0.28), 0 0 80px rgba(139,92,246,0.07);
+}
+
+/* ── Gradient Text Utility ────────────────────────────────────── */
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 60%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sidebar Active Link Glow ─────────────────────────────────── */
+.nav-active {
+  background: linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(6,182,212,0.10) 100%);
+  border: 1px solid rgba(16,185,129,0.30) !important;
+  box-shadow:
+    0 4px 20px -4px rgba(16,185,129,0.20),
+    inset 0 1px 0 rgba(16,185,129,0.08);
+}
+
+/* ── Luxury Input Fields ──────────────────────────────────────── */
+.luxury-input {
+  background: rgba(8,13,26,0.90);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #f1f5f9;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  font-family: var(--font-mono);
+}
+.luxury-input:focus {
+  outline: none;
+  border-color: rgba(16,185,129,0.55);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.10), 0 0 20px -5px rgba(16,185,129,0.20);
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+
+/* Laser scanner */
+@keyframes scanLaser {
+  0%   { top: 4%; opacity: 0.7; }
+  50%  { top: 92%; opacity: 1;  }
+  100% { top: 4%; opacity: 0.7; }
+}
+.animate-scan { animation: scanLaser 2.2s infinite ease-in-out; }
+
+/* Slow pulse glow */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.65; transform: scale(0.98); }
+}
+.animate-pulse-slow { animation: pulseGlow 3s infinite ease-in-out; }
+
+/* Float up-down */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+.animate-float { animation: floatY 4s infinite ease-in-out; }
+
+/* Rotate slow */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spinSlow 12s linear infinite; }
+
+/* Shimmer sweep */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.animate-shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.06) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* Border gradient rotate */
+@keyframes borderRotate {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fade in up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadein-up { animation: fadeInUp 0.5s ease-out both; }
+
+/* Blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.animate-blink { animation: blink 0.9s step-start infinite; }
+
+/* Status ring pulse */
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+.animate-ring-pulse { animation: ringPulse 2s infinite; }
+
+/* ── Luxury Badge ─────────────────────────────────────────────── */
+.badge-emerald {
+  background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(6,182,212,0.10) 100%);
+  border: 1px solid rgba(16,185,129,0.30);
+  color: #6ee7b7;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.badge-rose {
+  background: linear-gradient(135deg, rgba(244,63,94,0.15) 0%, rgba(239,68,68,0.10) 100%);
+  border: 1px solid rgba(244,63,94,0.30);
+  color: #fda4af;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.badge-amber {
+  background: linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(251,191,36,0.10) 100%);
+  border: 1px solid rgba(245,158,11,0.30);
+  color: #fcd34d;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.badge-cyan {
+  background: linear-gradient(135deg, rgba(6,182,212,0.15) 0%, rgba(14,165,233,0.10) 100%);
+  border: 1px solid rgba(6,182,212,0.30);
+  color: #67e8f9;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* ── Luxury Button ────────────────────────────────────────────── */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+.btn-luxury::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.btn-luxury:hover { transform: translateY(-1px); }
+.btn-luxury:active { transform: translateY(0) scale(0.98); }
+
+/* ── Font Utility ─────────────────────────────────────────────── */
+.font-mono { font-family: var(--font-mono); }
+
+/* ── Modal Animations ─────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
